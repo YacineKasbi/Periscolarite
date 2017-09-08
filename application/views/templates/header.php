@@ -49,7 +49,7 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 		  <ul class="nav navbar-nav navbar-right">
-			<li><a href="#"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+			<li><a href="index.php/subscribe"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
 			<li><a href="index.php/auth"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
 		  </ul>
 		</div>

@@ -41,5 +41,13 @@ class structure extends CI_Controller
 		$this->load->view('auth');
 		$this->load->view('templates/footer');
 	}
+
+	public function subscribe()
+	{
+		global $data;
+		$this->load->view('templates/header', $data);
+		$this->load->view('subscribe');
+		$this->load->view('templates/footer');
+	}
 }
 ?>
