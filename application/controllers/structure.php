@@ -15,10 +15,10 @@ class structure extends CI_Controller
 		//	Maintenant, ce code sera exécuté chaque fois que ce contrôleur sera appelé.
 		global $data;
 		$data = array();
-		$data['title'] = 'Acceuil - Périscolarité';
+		
 		$data['description'] = "Site de garde d'enfant";
 		$data['keywords'] = "garde scolaire nounou nourisse peri";
-		$data['contents'] = "page_contenu_view";
+		
 		
 	}
 	
@@ -31,24 +31,25 @@ class structure extends CI_Controller
 	public function accueil()
 	{
 		global $data;
+		$data['title'] = 'Acceuil - Périscolarité';
+		$data['contents'] = "page_contenu_view";
 		$this->load->view('templates/template', $data);
 	}
 
 		public function auth()
 	{
 		global $data;
-		$this->load->view('templates/header', $data);
-		$this->load->view('auth');
-		$this->load->view('templates/footer');
+		$data['title'] = 'Se connecter - Périscolarité';
+		$data['contents'] = "auth";
+		$this->load->view('templates/template', $data);
 	}
 
 	public function subscribe()
 	{
 		global $data;
-		$this->load->view('templates/header', $data);
-		$this->load->view('subscribe');
-		$this->load->view('templates/footer');
-		$this->load->view('templates/template', $data);		
+		$data['title'] = "S'inscrire - Périscolarité";
+		$data['contents'] = "subscribe";
+		$this->load->view('templates/template', $data);
 	}
 }
 ?>

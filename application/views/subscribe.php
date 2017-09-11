@@ -1,40 +1,11 @@
-<!DOCTYPE html>
-
-<html>
-
-    <head>
-    <!-- Je sais pas si c'est nécessaire , mais tans pis  -->
-        <meta charset="utf-8" />
-
-        <title>Page d'authentification en travaux </title><div id="form_inter">
-
-        
-    <link href="<?php echo base_url("/assets/css/volet.css");?>" rel="stylesheet">
-    <!-- Bootstrap core CSS -->
-    <link href="<?php echo base_url("/assets/css/bootstrap.min.css");?>" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <!--<link href="<?php echo base_url("assets/css/bootstrap-theme.min.css");?>" rel="stylesheet">-->
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!--<link href="<?php echo base_url("assets/css/ie10-viewport-bug-workaround.css");?>" rel="stylesheet">-->
-
-    <!-- Custom styles for this template -->
-    <!--<link href="<?php echo base_url("assets/css/theme.css");?>" rel="stylesheet">-->
-    <link href="<?php echo base_url("assets/css/add.css");?>" rel="stylesheet">
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="<?php echo base_url("assets/js/ie-emulation-modes-warning.js");?>"></script>
-
-    </head>
-
-
-    <body>
+<body>
     <div class="tab">
-      <button class="tablinks" onclick="openCity(event, 'EtatCivil')" id="defaultOpen">Etat civil</button>
-      <button class="tablinks" onclick="openCity(event, 'Identifiants')">Identifiants As du ménage</button>
-      <button class="tablinks" onclick="openCity(event, 'Coordonnees')">Coordonnées</button>
-      <button class="tablinks" onclick="openCity(event, 'Identite')">Identité</button>
-      <button class="tablinks" onclick="openCity(event, 'TravaillerPourAs')">Travailler pour As du ménage</button>
-      <button class="tablinks" onclick="openCity(event, 'InfoComplementaire')">Information complémentaire</button>
+      <button class="btn btn-primary" role="button" onclick="openCity(event, 'EtatCivil')" id="defaultOpen">Etat civil</button>
+      <button class="btn btn-primary" role="button" onclick="openCity(event, 'Identifiants')">Identifiants As du ménage</button>
+      <button class="btn btn-primary" role="button" onclick="openCity(event, 'Coordonnees')">Coordonnées</button>
+      <button class="btn btn-primary" role="button" onclick="openCity(event, 'Identite')">Identité</button>
+      <button class="btn btn-primary" role="button" onclick="openCity(event, 'TravaillerPourAs')">Travailler pour As du ménage</button>
+      <button class="btn btn-primary" role="button"onclick="openCity(event, 'InfoComplementaire')">Information complémentaire</button>
     </div>
     <div>
         <form action="Utilisateur/check_enregistrer_inter" method="post" class="enregistrement">
