@@ -31,6 +31,23 @@ class structure extends CI_Controller
 	public function accueil()
 	{
 		global $data;
+		$this->load->view('templates/template', $data);
+	}
+
+		public function auth()
+	{
+		global $data;
+		$this->load->view('templates/header', $data);
+		$this->load->view('auth');
+		$this->load->view('templates/footer');
+	}
+
+	public function subscribe()
+	{
+		global $data;
+		$this->load->view('templates/header', $data);
+		$this->load->view('subscribe');
+		$this->load->view('templates/footer');
 		$this->load->view('templates/template', $data);		
 	}
 }
