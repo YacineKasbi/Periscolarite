@@ -1,12 +1,4 @@
-﻿.container-fluid {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	left: 0;
-	z-index: 9999;	
-}
-
-#barre_nav {
+﻿#barre_nav {
 	position: fixed;
 	top: 0;
 	width: 100%;
