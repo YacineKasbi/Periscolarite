@@ -30,7 +30,7 @@
 		<li ><a href="#">Espace Intervenant<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>		
         <li ><a href="#">Espace client<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>        
         <li ><a href="#">Tarifs et devis<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
-		<li ><a href="#">Nous contacter<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
+		<li ><a href="#"data-toggle="modal" data-target="#modalContact" class="menu__link">Nous contacter<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
       </ul>
     </div>
 	</div>
@@ -73,6 +73,38 @@
 	  </div>
 	</div>
 	</div>
+	<div class="modal fade" id="modalContact" role="dialog">
+             	<div class="modal-dialog modal-lg">
+                        
+                          <!-- Modal content "nous contacter"-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h3 class="modal-title">Comment nous contacter?</h3>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Par Téléphone:</h5>
+                                <p>Standard: 01 47 30 70 30</br>
+                                Fax: 01 42 70 34 76</p>
+
+                                <hr />
+
+                                <h5>Par E-mail:</h5>
+                                <p><a href="mailto:service-informatique@gardeperiscolaire.fr">service-informatique@gardeperiscolaire.fr</a></p>
+
+                                <hr />
+
+                                <!-- Plan d'accès -->
+                                <h5>Plan d'accès:</h5>
+                                <center>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.0696744159236!2d2.2890219158082092!3d48.895009306081384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66f832a65d555%3A0x2ea2951e60f45491!2s80+Rue+Jules+Guesde%2C+92300+Levallois-Perret!5e0!3m2!1sfr!2sfr!4v1491312058585" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                </center>
+
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
 </body>
 
 
