@@ -1,12 +1,16 @@
+<style type="text/css">
+body {
+  margin-top: 2px;
+  margin-left: 2px;
+}
+</style> <!-- Pas bien !! à isoler dans un fichier css-->
 <body>
-    <div class="tab">
-      <button class="btn btn-primary" role="button" onclick="openCity(event, 'EtatCivil')" id="defaultOpen">Etat civil</button>
-      <button class="btn btn-primary" role="button" onclick="openCity(event, 'Identifiants')">Identifiants As du ménage</button>
-      <button class="btn btn-primary" role="button" onclick="openCity(event, 'Coordonnees')">Coordonnées</button>
-      <button class="btn btn-primary" role="button" onclick="openCity(event, 'Identite')">Identité</button>
-      <button class="btn btn-primary" role="button" onclick="openCity(event, 'TravaillerPourAs')">Travailler pour As du ménage</button>
-      <button class="btn btn-primary" role="button"onclick="openCity(event, 'InfoComplementaire')">Information complémentaire</button>
-    </div>
+			  <button class="btn btn-primary" role="button" onclick="openCity(event, 'EtatCivil')" id="defaultOpen">Etat civil</button>
+			  <button class="btn btn-primary" role="button" onclick="openCity(event, 'Identifiants')">Identifiants As du ménage</button>
+			  <button class="btn btn-primary" role="button" onclick="openCity(event, 'Coordonnees')">Coordonnées</button>
+			  <button class="btn btn-primary" role="button" onclick="openCity(event, 'Identite')">Identité</button>
+			  <button class="btn btn-primary" role="button" onclick="openCity(event, 'TravaillerPourAs')">Travailler pour As du ménage</button>
+			  <button class="btn btn-primary" role="button"onclick="openCity(event, 'InfoComplementaire')">Information complémentaire</button>
     <div>
         <form action="Utilisateur/check_enregistrer_inter" method="post" class="enregistrement">
 

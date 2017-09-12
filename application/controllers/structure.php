@@ -36,7 +36,7 @@ class structure extends CI_Controller
 		$this->load->view('templates/template', $data);
 	}
 
-		public function auth()
+	public function auth()
 	{
 		global $data;
 		$data['title'] = 'Se connecter - Périscolarité';
