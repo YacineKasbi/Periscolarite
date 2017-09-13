@@ -1,4 +1,4 @@
-﻿<body>
+<body>
 <nav class="navbar navbar-default sidebar" role="navigation">
     <div class="container-fluid">
 
@@ -73,9 +73,9 @@
 	  </div>
 	</div>
 	</div>
+	
 	<div class="modal fade" id="modalContact" role="dialog">
-             	<div class="modal-dialog modal-lg">
-                        
+             	<div class="modal-dialog modal-lg">                      
                           <!-- Modal content "nous contacter"-->
                           <div class="modal-content">
                             <div class="modal-header">
@@ -97,9 +97,12 @@
                                 <!-- Plan d'accès -->
                                 <h5>Plan d'accès:</h5>
                                 <center>
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.0696744159236!2d2.2890219158082092!3d48.895009306081384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66f832a65d555%3A0x2ea2951e60f45491!2s80+Rue+Jules+Guesde%2C+92300+Levallois-Perret!5e0!3m2!1sfr!2sfr!4v1491312058585" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                    <iframe
+									class="contact_frame"
+									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.0696744159236!2d2.2890219158082092!3d48.895009306081384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66f832a65d555%3A0x2ea2951e60f45491!2s80+Rue+Jules+Guesde%2C+92300+Levallois-Perret!5e0!3m2!1sfr!2sfr!4v1491312058585"
+									frameborder="0" style="border:0" allowfullscreen>
+									</iframe>
                                 </center>
-
                             </div>
                           </div>
 

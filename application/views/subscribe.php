@@ -1,213 +1,142 @@
-<style type="text/css">
-body {
-  margin-top: 2px;
-  margin-left: 2px;
-}
-</style> <!-- Pas bien !! à isoler dans un fichier css-->
+<link href="<?php echo base_url("assets/css/subscribe.css");?>" rel="stylesheet">
+<script type="text/javascript" src="<?php echo base_url("assets/js/subscribe.js");?>"></script>
 <body>
-			  <button class="btn btn-primary" role="button" onclick="openCity(event, 'EtatCivil')" id="defaultOpen">Etat civil</button>
-			  <button class="btn btn-primary" role="button" onclick="openCity(event, 'Identifiants')">Identifiants As du ménage</button>
-			  <button class="btn btn-primary" role="button" onclick="openCity(event, 'Coordonnees')">Coordonnées</button>
-			  <button class="btn btn-primary" role="button" onclick="openCity(event, 'Identite')">Identité</button>
-			  <button class="btn btn-primary" role="button" onclick="openCity(event, 'TravaillerPourAs')">Travailler pour As du ménage</button>
-			  <button class="btn btn-primary" role="button"onclick="openCity(event, 'InfoComplementaire')">Information complémentaire</button>
-    <div>
+	<ul class="nav nav-tabs" id="myTab">
+	  <li class="active"><a id="defaultOpen" data-toggle="tab" href="#menu01" onclick="openCity(event, 'EtatCivil')">Etat civil</a></li>
+	  <li><a data-toggle="tab" href="#menu02" onclick="openCity(event, 'Identifiants')" >Identifiants</a></li>
+	  <li><a data-toggle="tab" href="#menu03" onclick="openCity(event, 'Coordonnees')">Coordonnées</a></li>
+	  <li><a data-toggle="tab" href="#menu04" onclick="openCity(event, 'Identite')">Identité</a></li>
+	  <li><a data-toggle="tab" href="#menu05" onclick="openCity(event, 'TravaillerPourAs')">Travailler pour Périscolairé</a></li>
+	  <li><a data-toggle="tab" href="#menu0" onclick="openCity(event, 'InfoComplementaire')">Information complémentaire</a></li>
+	</ul>	
+	
         <form action="Utilisateur/check_enregistrer_inter" method="post" class="enregistrement">
-
-        <div id="EtatCivil" class="tabcontent">
-          <h3>Mon état civil</h3>
-            <p>
-                <label for="Nom">Nom* </label>
-                <input type="text" name="Nom" value="" required autofocus>
-            </p>
-            <p>
-                <label for="Prenom">Prenom* </label>
-                <input type="text" name="Prenom" value="" required autofocus>
-            </p>
-            <p>
-                <label for="Sexe">Sexe* </label>
-                <select name="Sexe" required autofocus>
-                    <option></option>
-                    <option value="F">Femme</option>
-                    <option value="F">Homme</option>
-                </select>
-            </p>
-            <p>
-                <label for="DateNaissance">Date de naissance* </label>
- 
-                <select name="JourNaissance" required autofocus>
-                    <option></option>
-                        <?php for ($jour = 1 ; $jour <= 31 ; $jour++)
-                {
-                ?>
-                                  <option value="<?php echo $jour ?>"><?php echo $jour; ?></option>
-                <?php              
-                }
-                ?>  
-                </select>
-                <select name="MoisNaissance" required autofocus>
-                    <option></option>
-                        <?php for ($mois = 1 ; $mois <= 12 ; $mois++)
-                {
-                ?>
-                                  <option value="<?php echo $mois ?>"><?php echo $mois; ?></option>
-                <?php              
-                }
-                ?>  
-                </select>
-                <select name="AnneeNaissance" required autofocus>
-                    <option></option>
-                        <?php for ($annee = 2005 ; 1900 <= $annee ; $annee--)
-                {
-                ?>
-                                  <option value="<?php echo $annee ?>"><?php echo $annee; ?></option>
-                <?php              
-                }
-                ?>  
-                </select>
-            </p>
-                <center>
-                    <p id="foot-form">Les champs avec un * sont obligatoires!</p>
-                </center>
-        </div>
-
-        <div id="Identifiants" class="tabcontent">
-          <h3>Mes identifiants As Du Ménage</h3>
-            <p>
-                <label for="Email">Email* </label>
-                <input type="mail" name="Email" value="" required autofocus>
-            </p>
-            <p>
-                <label for="Password">Mot de passe* </label>
-                <input type="password" name="Password" value="" required autofocus>
-            </p>
-            <p>
-                <label for="ConfirmPassword">Confirmer le mot de passe* </label>
-                <input type="password" name="ConfirmPassword" value="" required autofocus>
-            </p>
-            <center>
-                <p id="foot-form">Les champs avec un * sont obligatoires!</p>
-            </center>
-        </div>
-
-        <div id="Coordonnees" class="tabcontent">
-          <h3>Mes coordonnées</h3>
-            <p>
-                <label for="Adresse">Adresse* </label>
-                <input type="text" name="Adresse" value="" required autofocus>
-            </p>
-            <p>
-                <label for="Ville">Ville* </label>
-                <input type="text" name="Ville" value="" required autofocus>
-            </p>
-            <p>
-                <label for="Vehicule">Etes-vous véhiculé?* </label>
-                <select name="Vehicule" required autofocus>
-                    <option></option>
-                    <option value="oui">Oui</option>
-                    <option value="non">Non</option>
-                    <option value="permis">J'ai le permis mais pas de véhicule</option>
-                </select>
-            </p>
-            <p>
-                <label for="CodePostal">Code postal* </label>
-                <input type="text" name="CodePostal" value="" required autofocus>
-            </p>
-            <p> 
-                <label for="NumFixe">Numéro de téléphone fixe </label>
-                <input type="text" name="NumFixe" value="">
-            </p>
-            <p>
-                <label for="NumPortable">Numéro de téléphone portable* </label>
-                <input type="text" name="NumPortable" value="" required autofocus>
-            </p>
-            <center>
-                <p id="foot-form">
-                    Les champs avec un * sont obligatoires! 
-                </p>
-            </center>
-        </div>
-
-        <div id="Identite" class="tabcontent">
-            <h3>Mon identité</h3>
-            <p>
-                <label for="Nationalite">Nationalité* </label>
-                <input type="text" name="Nationalite" value="" required autofocus>
-            </p>
-            <p>
-                <label for="PaysNaissance">Pays de naissance* </label>
-                <input type="text" name="PaysNaissance" value="" required autofocus>
-            </p>
-            <p>
-                <label for="VilleNaissance">Ville de naissance* </label>
-                <input type="text" name="VilleNaissance" value="" required autofocus>
-            </p>
-            <p>
-                <label for="CodePostalNaissance">Code postal de la ville de naissance* </label>
-                <input type="text" name="CodePostalNaissance" value="" required autofocus>
-            </p>
-            <p>
-                <label for="PapierIdentite">Type de papier d'identité* </label>
-                <select name="PapierIdentite" required autofocus>
-                    <option></option>
-                    <option value="carteIdentite">Carte nationnale d'identité</option>
-                    <option value="passeportEurope">Passeport européen</option>
-                    <option value="titreSejour">Titre de séjour</option>
-                </select>
-            </p>
-            <p>
-                <label for="DateExpiration">Date d'expiration* </label>
-
-                <select name="JourExpiration" required autofocus>
-                    <option></option>
-                        <?php for ($jour = 1 ; $jour <= 31 ; $jour++)
-                {
-                ?>
-                                  <option value="<?php echo $jour ?>"><?php echo $jour; ?></option>
-                <?php              
-                }
-                ?>  
-                </select>
-                <select name="MoisExpiration" required autofocus>
-                    <option></option>
-                        <?php for ($mois = 1 ; $mois <= 12 ; $mois++)
-                {
-                ?>
-                                  <option value="<?php echo $mois ?>"><?php echo $mois; ?></option>
-                <?php              
-                }
-                ?>  
-                </select>
-                <select name="AnneeExpiration" required autofocus>
-                    <option></option>
-                        <?php for ($annee = 2017 ; $annee <= 2047 ; $annee++)
-                {
-                ?>
-                                  <option value="<?php echo $annee ?>"><?php echo $annee; ?></option>
-                <?php              
-                }
-                ?>  
-                </select>
-            </p>
-            <p>
-                <label for="DelivrePar">Délivré par* </label>
-                <input type="text" name="DelivrePar" value="" required autofocus>
-            </p>
-            <p>
-                <label for="DepartementObtention">Département d'obtention des papiers d'identité* </label>
-                <input type="text" name="DepartementObtention" value="" required autofocus>
-            </p>
-            <p>
-                <label for="NumeroSecuSociale">Numéro de sécurité sociale* </label>
-                <input type="text" name="NumeroSecuSociale" value="" required autofocus>
-            </p>
-            <center>
-                <p id="foot-form">
-                    Les champs avec un * sont obligatoires! 
-                </p>
-            </center>
-            
-        </div>
+			<div class="row">
+				<div id="EtatCivil" class="tabcontent col-lg-3">
+					<h3>Mon état civil</h3>
+					<div class="form-group">
+						<label for="nom">Nom: *</label>
+						<input type="text" class="form-control" id="nom">
+					</div>
+					<div class="form-group">
+						<label for="prenom">Prenom: *</label>
+						<input type="text" class="form-control" id="prenom">
+					</div>
+					<div class="form-group">
+						<label for="sel1">Sexe: *</label>
+						<select class="form-control" id="sexe">
+							<option>Homme</option>
+							<option>Femme</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="date_naissance">Date de naissance: *</label>
+						<input type="date" name="anniversaire" class="form-control" id="dateNaissance">
+					</div>
+					<button type="button" class="btn btn-default">Suivant</button>
+				</div>
+			</div>
+		
+		<div class="row">
+			<div id="Identifiants" class="tabcontent col-lg-3">
+				<h3>Mes identifiants périscolarité</h3>
+				<div class="form-group">
+					<label for="email">Email: *</label>
+					<input type="email" class="form-control" id="email">
+				</div>
+				<div class="form-group">
+					<label for="pwd">Mot de passe: *</label>
+					<input type="password" class="form-control" id="pwd">
+				</div>
+				<div class="form-group">
+					<label for="pwd">Confirmer mot de passe: *</label>
+					<input type="password" class="form-control" id="confirm_pwd">
+				</div>
+				<button type="button" class="btn btn-default">Suivant</button>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div id="Coordonnees" class="tabcontent col-lg-3">
+			  <h3>Mes coordonnées</h3>
+				<div class="form-group">
+					<label for="adresse">Adresse: *</label>
+					<input type="text" class="form-control" id="adresse">
+				</div>
+				<div class="form-group">
+					<label for="ville">Ville: *</label>
+					<input type="text" class="form-control" id="ville">
+				</div>
+				<div  class="form-group">
+					<label for="vehicule">Etes-vous véhiculé ? *</label>
+					<select class="form-control" id="vehicule">
+						<option value="oui">Oui</option>
+						<option value="non">Non</option>
+						<option value="permis">J'ai le permis mais pas de véhicule</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="codepostal">Code postal: *</label>
+					<input type="text" class="form-control" id="code_postale">
+				</div>
+				<div class="form-group"> 
+					<label for="numfixe">Numéro de téléphone fixe: *</label>
+					<input type="text" class="form-control" id="numfixe">
+				</div>
+				<div class="form-group">
+					<label for="numportable">Numéro de téléphone portable: *</label>
+					<input type="text" class="form-control" id="numportable">
+				</div>
+			<button type="button" class="btn btn-default">Suivant</button>	
+			</div>
+		</div>
+		
+		<div class="row">
+			<div id="Identite" class="tabcontent col-lg-3">
+				<h3>Mon identité</h3>
+				<div class="form-group">
+					<label for="nationalite">Nationalité: *</label>
+					<input type="text" class="form-control" id="nationalite">
+				</div>
+				<div class="form-group">
+					<label for="pays_naissance">Pays de naissance *</label>
+					<input type="text" class="form-control" id="pays_naissance">
+				</div>
+				<div class="form-group">
+					<label for="ville_naissance">Ville de naissance *</label>
+					<input type="text" class="form-control" id="ville_naissance">
+				</div>
+				<div class="form-group">
+					<label for="code_postal_naissance">Code postal de la ville de naissance *</label>
+					<input type="text" class="form-control" id="CodePostalNaissance">
+				</div>
+				<div class="form-group">
+					<label for="papier_identite">Type de papier d'identité *</label>
+					<select class="form-control" id="papier_identite">
+						<option value="carteIdentite">Carte nationnale d'identité</option>
+						<option value="passeportEurope">Passeport européen</option>
+						<option value="titreSejour">Titre de séjour</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="date_expiration">Date d'expiartion *</label>
+					<input type="date" name="expiration" class="form-control" id="date_expiration">
+				</div>
+				<div class="form-group">
+					<label for="delivre_par">Délivré par *</label>
+					<input type="text" class="form-control" id="delivre_par">
+				</div>
+				<div class="form-group">
+					<label for="departement_obtention">Département d'obtention des papiers d'identité *</label>
+					<input type="text" class="form-control" id="departement_obtention" required autofocus>
+				</div>
+				<div class="form-group">
+					<label for="numero_secu_sociale">Numéro de sécurité sociale *</label>
+					<input type="text" class="form-control" id="numeroSecuSociale">
+				</div>
+			<button type="button" class="btn btn-default">Suivant</button>	
+			</div>
+		</div>
         <div id="TravaillerPourAs" class="tabcontent">
             <h3>Travailler pour As du ménage</h3>
             <p>
@@ -323,9 +252,11 @@ Dimanche de </textarea>
 
 
     <script type="text/javascript">
+	document.getElementById("defaultOpen").click();  
     function openCity(evt, cityName) {
+		
         // Declare all variables
-        var i, tabcontent, tablinks;
+        var i, tabcontent;
 
         // Get all elements with class="tabcontent" and hide them
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -333,20 +264,9 @@ Dimanche de </textarea>
             tabcontent[i].style.display = "none";
         }
 
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-
         // Show the current tab, and add an "active" class to the button that opened the tab
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
-    }
-
-    // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
-
-    // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
+    } 
+	
     </script>

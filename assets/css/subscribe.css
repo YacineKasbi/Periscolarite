@@ -1,4 +1,7 @@
-#bouttons {
-margin-top: 20px;
-	
+.tabcontent{
+	margin-left: 1%;
+}
+
+.next {
+	float: right;
 }

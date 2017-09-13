@@ -15,7 +15,6 @@
 		<script type="text/javascript" src="<?php echo base_url("assets/js/jquery-3.2.1.min.js");?>"></script>
 		<link href="<?php echo base_url("assets/css/menu.css");?>" rel="stylesheet">
 		<link href="<?php echo base_url("assets/css/theme.css");?>" rel="stylesheet">
-		<link href="<?php echo base_url("assets/css/subscribe.css");?>" rel="stylesheet">
 		<!-- Bootstrap core CSS -->
 		<link href="<?php echo base_url("assets/css/bootstrap.min.css");?>" rel="stylesheet">
 		<!-- Bootstrap theme -->
