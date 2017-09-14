@@ -29,7 +29,7 @@
         </li>
 		<li ><a href="#">Espace Intervenant<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>		
         <li ><a href="#">Espace client<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>        
-        <li ><a href="#">Tarifs et devis<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
+        <li ><a href="tarifs">Tarifs et devis<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
 		<li ><a href="#"data-toggle="modal" data-target="#modalContact" class="menu__link">Nous contacter<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
       </ul>
     </div>
@@ -108,6 +108,18 @@
 
                         </div>
                       </div>
+          <div>
+          <center>
+            <h2>Periscolarite</h2>
+            <p class="font-manuscrite">Trouvez la personne qui correspond à vos besoin.</p>
+            <form class="navbar-form" id="formMilieuImage" action="intervenants?recherche=" type="post" style="margin-bottom: 200px;">
+              <div class="form-group">
+                <input type="text" class="form-control" name="recherche" placeholder="Votre code postal" required>
+              </div>
+              <button type="submit" class="btn btn-default">Chercher</button>
+            </form>
+          </center>
+        </div>
 </body>
 
 

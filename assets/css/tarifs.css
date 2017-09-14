@@ -1,0 +1,38 @@
+body {
+	display: inline-block;
+	padding: 15px;
+	margin: auto;
+}
+
+.garde-cdi {
+	float: left;
+	border-spacing: 10px 10px;
+	border-collapse: separate;
+}
+
+.garde-cdd {
+	float: right;
+	border-spacing: 10px 10px;
+	border-collapse: separate;
+	
+}
+
+.soutien-cdd {
+	border-spacing: 10px 10px;
+	border-collapse: separate;
+
+
+}
+
+.soutien-cdi {
+	border-spacing: 10px 10px;
+	border-collapse: separate;
+	
+}
+
+#boutton-devis {
+	margin-left: 30%;
+	font-size: 170%;
+    font-family: "Lobster";
+    text-shadow: 2px 2px 2px black;
+}

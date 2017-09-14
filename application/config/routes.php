@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['auth'] = 'structure/auth';
 $route['subscribe'] = 'structure/subscribe';
+$route['tarifs'] = 'structure/tarifs';

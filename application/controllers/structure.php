@@ -51,5 +51,13 @@ class structure extends CI_Controller
 		$data['contents'] = "subscribe";
 		$this->load->view('templates/template', $data);
 	}
+
+	public function tarifs()
+	{
+		global $data;
+		$data['title'] = "Les tarifs";
+		$data['contents'] = "tarifs";
+		$this->load->view('templates/template', $data);
+	}
 }
 ?>
