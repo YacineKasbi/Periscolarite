@@ -16,22 +16,22 @@
 					<h3>Mon état civil</h3>
 					<div class="form-group">
 						<label for="nom">Nom: *</label>
-						<input type="text" class="form-control" id="nom">
+						<input type="text" class="form-control champ" id="nom" required="required">
 					</div>
 					<div class="form-group">
 						<label for="prenom">Prenom: *</label>
-						<input type="text" class="form-control" id="prenom">
+						<input type="text" class="form-control champ" id="prenom" required="required">
 					</div>
 					<div class="form-group">
 						<label for="sel1">Sexe: *</label>
-						<select class="form-control" id="sexe">
+						<select class="form-control sel" id="sexe">
 							<option>Homme</option>
 							<option>Femme</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="date_naissance">Date de naissance: *</label>
-						<input type="date" name="anniversaire" class="form-control" id="dateNaissance">
+						<input type="date" class="form-control" id="dateNaissance" required="required">
 					</div>
 					<button type="button" class="btn btn-default">Suivant</button>
 				</div>
@@ -61,15 +61,15 @@
 			  <h3>Mes coordonnées</h3>
 				<div class="form-group">
 					<label for="adresse">Adresse: *</label>
-					<input type="text" class="form-control" id="adresse">
+					<input type="text" class="form-control champ" id="adresse">
 				</div>
 				<div class="form-group">
 					<label for="ville">Ville: *</label>
-					<input type="text" class="form-control" id="ville">
+					<input type="text" class="form-control champ" id="ville">
 				</div>
 				<div  class="form-group">
 					<label for="vehicule">Etes-vous véhiculé ? *</label>
-					<select class="form-control" id="vehicule">
+					<select class="form-control sel" id="vehicule">
 						<option value="oui">Oui</option>
 						<option value="non">Non</option>
 						<option value="permis">J'ai le permis mais pas de véhicule</option>
@@ -112,7 +112,7 @@
 				</div>
 				<div class="form-group">
 					<label for="papier_identite">Type de papier d'identité *</label>
-					<select class="form-control" id="papier_identite">
+					<select class="form-control sel" id="papier_identite">
 						<option value="carteIdentite">Carte nationnale d'identité</option>
 						<option value="passeportEurope">Passeport européen</option>
 						<option value="titreSejour">Titre de séjour</option>
@@ -124,15 +124,15 @@
 				</div>
 				<div class="form-group">
 					<label for="delivre_par">Délivré par *</label>
-					<input type="text" class="form-control" id="delivre_par">
+					<input type="text" class="form-control champ" id="delivre_par">
 				</div>
 				<div class="form-group">
 					<label for="departement_obtention">Département d'obtention des papiers d'identité *</label>
-					<input type="text" class="form-control" id="departement_obtention" required autofocus>
+					<input type="text" class="form-control champ" id="departement_obtention" required autofocus>
 				</div>
 				<div class="form-group">
 					<label for="numero_secu_sociale">Numéro de sécurité sociale *</label>
-					<input type="text" class="form-controlF" id="numeroSecuSociale">
+					<input type="text" class="form-control" id="numeroSecuSociale">
 				</div>
 			<button type="button" class="btn btn-default">Suivant</button>	
 			</div>
@@ -142,7 +142,7 @@
 				<h3>Travailler pour périscolarité</h3>
 				<div class="form-group">
 					<label for="SituationPro">Vous êtes *</label>
-					<select class="form-control" id="situation_pro">
+					<select class="form-control sel" id="situation_pro">
 						<option value="etudiant">Etudiant(e)</option>
 						<option value="prof">Formateur(trice)/Professeur</option>
 						<option value="sansActivite">Sans activité</option>
@@ -180,9 +180,8 @@ Dimanche de</textarea>
 					<input type="email" class="form-control" id="mail_parrain">
 				</div>
 				<div class="form-group">
-					<label for="comment_connu">Comment avez vous connu As Du Ménage ? *</label>
-					<select class="form-control" id="comment_connu">
-						<option></option>
+					<label for="comment_connu">Comment avez vous connu Périscolarité ? *</label>
+					<select class="form-control sel" id="comment_connu">
 						<option value="ami">Par un ami</option>
 						<option value="commercial">Lien commercial</option>
 						<option value="moteurRecherche">Moteur de recherche</option>
@@ -206,23 +205,22 @@ Dimanche de</textarea>
 					<div class="checkbox">
 						<label><input type="checkbox" name="ConditionPaiement">J'accepte de me conformer aux 
 							<!-- Trigger the modal with a link -->
-							  <a href="#" data-toggle="modal" data-target="#modalConditionPaiement">conditions de paiement As Du Ménage</a>*</label>
+							  <a href="#" data-toggle="modal" data-target="#modalConditionPaiement">conditions de paiement Périscolarité</a>*</label>
 					</div>
-					
 				</div>
-				<button style="float:right;" type="submit">Valider</button>
-				<div class="raw">
+				<button class="btn btn-default" style="float:right;" type="submit">Valider</button>
+				<div class="row">
 				<div class="col-lg-12">
 					<p id="infoLegale" style="font-size: 50%;">
 						<p><b>
 							Informations légales
 						</b></p>
-						Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d’un droit d’accès et de rectification aux informations qui vous concernent, que vous pouvez exercer en envoyant un email à info@asdumenage.fr ou en envoyant un courrier postal à As Du Ménage, 80 Rue Jules Guesde, 92300 Levallois-Perret
+						Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d’un droit d’accès et de rectification aux informations qui vous concernent, que vous pouvez exercer en envoyant un email à <strong>service-informatique@gardeperiscolaire.fr</strong> ou en envoyant un courrier postal à Périscolarité, 80 Rue Jules Guesde, 92300 Levallois-Perret
 					</p>
 					
 					<center>
 						<p id="foot-form">
-							Les champs avec un * sont obligatoires! 
+							<strong>Les champs avec un * sont obligatoires</strong>
 						
 						</p>
 						<p>Si vous ne pouvez pas valider, vous avez surrement oublié d'entrer une information. Vérifiez que tous les champs avec un * sont remplis.</p>
@@ -230,9 +228,7 @@ Dimanche de</textarea>
 				</div>
 				</div>
 			</div>
-			
-			
-			
+						
 			 <!-- Modal -->
 						<div class="modal fade" id="modalConditionPaiement" role="dialog">
 							<div class="modal-dialog modal-lg">
