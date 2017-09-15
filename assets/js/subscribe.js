@@ -3,6 +3,14 @@ $(document).ready(function(){
 	 $('[data-toggle="popover"]').popover();
 });
 
+function surligne(champ, erreur)
+{
+   if(erreur)
+      champ.style.backgroundColor = "#fba";
+   else
+      champ.style.backgroundColor = "";
+}
+
 function openCity(evt, cityName) {
 		
         // Declare all variables
@@ -39,7 +47,9 @@ $(document).ready(function(){
 		$code_postale_naissance = $('#CodePostalNaissance'),
 		$date_expiration = $('#date_expiration'),
 		$numero_secu = $('#numeroSecuSociale'),
-		$motivations = $('#motivforminter'),
+		$motivations = $('#motivations'),
+		$conditions_gen = $('.ConditionGenerale'),
+		$conditons_paiement = $('.ConditionPaiement'),
 		$champ = $('.champ');
 		
 // 1. ETAT CIVIL
@@ -58,8 +68,7 @@ $(document).ready(function(){
 		$($email).css({
 				borderColor : 'red',
 				color : 'red'
-			});
-			
+			});		
 		
 
 	$champ.keyup(function(){
@@ -176,7 +185,7 @@ $(document).ready(function(){
     });
 	
 	$num_fixe.focusout(function(){
-        var num_fixeReg = /^(0|(00|\+)33)[67][0-9]{8}$/;
+        var num_fixeReg = /(01|02|03|04|05|08|09)[0-9]{8}$/;
         var num_fixeVal = $(this).val();
          
         if(num_fixeVal == '') {
@@ -200,7 +209,7 @@ $(document).ready(function(){
     });
 	
 	$num_portable.focusout(function(){
-        var num_portableReg = /^(06|07)[0-9]{8}$/;
+        var num_portableReg = /^(0|(00|\+)33)[67][0-9]{8}$/;
         var num_portableVal = $(this).val();
          
         if(num_portableVal == '') {
@@ -332,71 +341,115 @@ $(document).ready(function(){
 			});
 		 }
 	});
+});
 
-// Vérification des champs avant envoi serveur
-
-	function verif_champ($champ) {
-		if($nom.val().length >= 1)
-		{
-			surligne($champ, false);
-			return true;
-		}
-		else
+// Vérification des champs avant envoi serveur	
+	function verif_nom(champ) {
+		if(champ.value.length < 1)
 		{
 			surligne(champ, true);
 			return false;
 		}
+	   else
+		{
+			surligne(champ, false);
+			return true;
+		}
 	}
 	
-	function verif_mail($email) {
+	function verif_prenom(champ) {
+		if(champ.value.length < 1)
+		{
+			surligne(champ, true);
+			return false;
+		}
+	   else
+		{
+			surligne(champ, false);
+			return true;
+		}
+	}
+	
+	function verif_email(champ) {
 		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-        var emailaddressVal = $(this).val();
-         
-        if(emailaddressVal == '') {
-            surligne(champ, true);
+        var emailaddressVal = champ.value;
+		if(emailaddressVal == '')
+		{
+			surligne(champ, true);
 			return false;
-        } 
-		else if(!emailReg.test(emailaddressVal)) {
-            surligne(champ, true);
+		}
+	   else if(!emailReg.test(emailaddressVal)) 
+		{
+			surligne(champ, true);
 			return false;
-        } 
-		else {
-			surligne($champ, false);
+		}
+		else
+		{
+            surligne(champ, false);
 			return true;
         }
 	}
-	
-	function verif_pwd($pwd) {
-		if($pwd.val().length >= 1)
-		{
-			surligne($champ, false);
-			return true;
-		}
-		else
-		{
-			surligne(champ, true);
-			return false;
-		}
-	}
-	
-	function verif_conf_pwd($confirm_pwd) {
-		if($(this).val() == $pwd.val()){
-		
-			surligne($champ, false);
-			return true;
-		}
-		else
-		{
-			surligne(champ, true);
-			return false;
-		}
-	}
 
-	function verif_code_postale($code_postale) {
+	var mdp;
+    function verif_pwd(pwd) {
+		mdp = pwd.value;
+		if(pwd.value.length < 5)
+		{
+			surligne(pwd, true);
+			return false;
+		}
+	   else
+		{
+			surligne(pwd, false);
+			return true;
+		}
+	}
+	
+	function verif_conf_pwd(champ) {
+		if(champ.value != mdp)
+		{
+			surligne(champ, true);
+			return false;
+		}
+	   else
+		{
+			surligne(champ, false);
+			return true;
+		}
+	}
+	
+	function verif_adresse(champ) {
+		if(champ.value.length < 1)
+		{
+			surligne(champ, true);
+			return false;
+		}
+	   else
+		{
+			surligne(champ, false);
+			return true;
+		}
+	}
+	
+	function verif_ville(champ) {
+		if(champ.value.length < 1)
+		{
+			surligne(champ, true);
+			return false;
+		}
+	   else
+		{
+			surligne(champ, false);
+			return true;
+		}
+	}
+	
+	
+	function verif_code_postale(champ) {
 		var code_postaleReg = /^(([0-8][0-9])|(9[0-5]))[0-9]{3}$/;
-        var code_postaleVal = $(this).val();
-         
-        if(code_postaleVal == '') {
+        var code_postaleVal = champ.value;
+		
+		if(code_postaleVal == '') {
             surligne(champ, true);
 			return false;
         } 
@@ -405,16 +458,16 @@ $(document).ready(function(){
 			return false;
         } 
 		else {
-            surligne($champ, false);
+			surligne(champ, false);
 			return true;
         }
 	}
-
-	function verif_num_fixe($num_fixe) {
-		var num_fixeReg = /^(0|(00|\+)33)[67][0-9]{8}$/;
-        var num_fixeVal = $(this).val();
-         
-        if(num_fixeVal == '') {
+	
+	function verif_num_fixe(champ) {
+		var num_fixeReg = /(01|02|03|04|05|08|09)[0-9]{8}$/;
+        var num_fixeVal = champ.value;
+		
+		if(num_fixeVal == '') {
 			surligne(champ, true);
 			return false;
         } 
@@ -423,17 +476,17 @@ $(document).ready(function(){
 			return false;
         } 
 		else {
-            surligne($champ, false);
+            surligne(champ, false);
 			return true;
-		}
+        }
 	}
 	
-	function verif_num_portable($num_portable) {
-		var num_portableReg = /^(06|07)[0-9]{8}$/;
-        var num_portableVal = $(this).val();
-         
-        if(num_portableVal == '') {
-            surligne(champ, true);
+	function verif_num_portable(champ) {
+		var num_portableReg = /^(0|(00|\+)33)[67][0-9]{8}$/;			
+        var num_portableVal = champ.value;
+		
+		if(num_portableVal == '') {
+			surligne(champ, true);
 			return false;
         } 
 		else if(!num_portableReg.test(num_portableVal)) {
@@ -441,88 +494,179 @@ $(document).ready(function(){
 			return false;
         } 
 		else {
-            surligne($champ, false);
+            surligne(champ, false);
 			return true;
         }
 	}
 	
-	function verif_nationalite($nationalite) {
-		if($(this).val().length < 4){
+	function verif_nationalite(champ) {
+		if(champ.value.length < 4)
+		{
 			surligne(champ, true);
 			return false;
-		 }
-		 else{
-			surligne($champ, false);
+		}
+	   else
+		{
+			surligne(champ, false);
 			return true;
 		}
 	}
 	
-	function verif_pays_naissance($pays_naissance) {
-		if($(this).val().length < 4){
+	function verif_pays_naissance(champ) {
+		if(champ.value.length < 4)
+		{
 			surligne(champ, true);
 			return false;
-		 }
-		 else{
-			surligne($champ, false);
+		}
+	   else
+		{
+			surligne(champ, false);
 			return true;
 		}
 	}
 	
-	function verif_ville_naissance($ville_naissance) {
-		if($(this).val().length < 1){
+	function verif_ville_naissance(champ) {
+		if(champ.value.length < 1)
+		{
 			surligne(champ, true);
 			return false;
-		 }
-		 else{
-			surligne($champ, false);
+		}
+	   else
+		{
+			surligne(champ, false);
 			return true;
 		}
 	}
 	
-	function verif_code_postale_naissance($code_postale_naissance) {
+	function verif_code_postale_naissance(champ) {
 		var code_postale_naissanceReg = /^(([0-8][0-9])|(9[0-5]))[0-9]{3}$/;
-        var code_postale_naissanceVal = $(this).val();
-         
-        if(code_postale_naissanceVal == '') {
+        var code_postale_naissanceVal = champ.value;
+		
+		if(code_postale_naissanceVal == '') {
             surligne(champ, true);
 			return false;
         } 
 		else if(!code_postale_naissanceReg.test(code_postale_naissanceVal)) {
-            surligne(champ, true); // CHANGER CHAMP EN $code_postale_naissance PARTOUT !!!!!!
+            surligne(champ, true);
 			return false;
         } 
 		else {
-            surligne($champ, false);
+			surligne(champ, false);
 			return true;
         }
 	}
 	
-	function verif_code_num_secu($numero_secu) {
-		if($(this).val().length != 15){
+	function verif_delivre_par(champ) {
+		if(champ.value.length < 1)
+		{
 			surligne(champ, true);
 			return false;
-		 }
-		 else{
-			surligne($champ, false);
+		}
+	   else
+		{
+			surligne(champ, false);
 			return true;
 		}
 	}
 	
-	function verif_motivations($motivations) {
-		if($(this).val().length < 30){
+	function verif_dep_papier(champ) {
+		if(champ.value.length < 1)
+		{
 			surligne(champ, true);
 			return false;
-		 }
-		 else{
-			surligne($champ, false);
+		}
+		else
+		{
+			surligne(champ, false);
 			return true;
 		}
 	}
-	// A VERIFIER CONDITIONS GENERALES + CONDITIONS PAIEMENT
-	// CHANGER LES THIS EN L ELEMENT VOULUE
-	// FAIRE REGEX POUR DATE /!\ HTML 5
-	// Faire fonction booleene finale avant le submit serveur
-});
+	
+	function verif_numero_secu(champ) {
+		if(champ.value.length != 15)
+		{
+			surligne(champ, true);
+			return false;
+		}
+		else
+		{
+			surligne(champ, false);
+			return true;
+		}
+	}
+	
+	function verif_motivations(champ) {
+		if(champ.value.length < 30)
+		{
+			surligne(champ, true);
+			return false;
+		}
+		else
+		{
+			surligne(champ, false);
+			return true;
+		}
+	}
+	
+	function verif_conditions_gen(champ) {
+		if(document.getElementById('ConditionGenerale').checked)
+		{
+			return true;
+		} 
+		else
+		{
+			return false;
+		}
+	}
+	
+	function verif_conditions_paiement(champ) {
+		if(document.getElementById('ConditionPaiement').checked)
+		{
+			return true;
+		} 
+		else
+		{
+			return false;
+		}
+	}
+	
+	function verifForm(f) {
+		// Evite le && paresseux
+		var nomOk = verif_nom(f.nom);
+		var prenomOk = verif_prenom(f.prenom);
+		var mailOk = verif_email(f.email);
+		var pwdOk = verif_pwd(f.pwd);
+		var conf_pwdOk = verif_conf_pwd(f.confirm_pwd);
+		var adresseOk = verif_adresse(f.adresse);
+		var villeOk = verif_ville(f.ville);
+		var code_postaleOk = verif_code_postale(f.code_postale);
+		var num_fixeOk = verif_num_fixe(f.num_fixe);
+		var num_portableOk = verif_num_portable(f.num_portable);
+		var nationaliteOk = verif_nationalite(f.nationalite);
+		var pays_naissanceOk = verif_pays_naissance(f.pays_naissance);
+		var ville_naissanceOk = verif_ville_naissance(f.ville_naissance);
+		var code_postale_naissanceOk = verif_code_postale_naissance(f.CodePostalNaissance);
+		var delivre_par_Ok = verif_delivre_par(f.delivre_par);
+		var dep_papierOk = verif_dep_papier(f.departement_obtention);
+		var numero_secuOk = verif_numero_secu(f.numeroSecuSociale);
+		var motivationsOk = verif_motivations(f.motivations);
+		var conditions_genOk = verif_conditions_gen(f.ConditionGenerale);
+		var conditions_paieOk = verif_conditions_paiement(f.ConditionPaiement);
+		
+		if(nomOk && prenomOk && mailOk && pwdOk && conf_pwdOk && adresseOk && villeOk && code_postaleOk && num_fixeOk && num_portableOk && nationaliteOk && pays_naissanceOk 
+		&& ville_naissanceOk && code_postale_naissanceOk && delivre_par_Ok && dep_papierOk && numero_secuOk && motivationsOk && conditions_genOk && conditions_paieOk) 
+		{
+			return true;
+		}
+		else
+		{
+			alert('/!\ Formulaire incomplet !')
+			// ajouter MODAL a la place du alert avec un display none
+			return false;
+		}
+	}
+
+
 	
 
 

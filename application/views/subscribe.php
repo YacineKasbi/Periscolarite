@@ -10,17 +10,17 @@
 		  <li><a data-toggle="tab" href="#menu0" onclick="openCity(event, 'InfoComplementaire')">Information complémentaire</a></li>
 		</ul>
 	
-        <form action="Utilisateur/check_enregistrer_inter" method="post" class="enregistrement">
+        <form action="test" method="post" class="enregistrement" onsubmit="return verifForm(this)">
 			<div class="row">
 				<div id="EtatCivil" class="tabcontent col-lg-3">
 					<h3>Mon état civil</h3>
 					<div class="form-group">
 						<label for="nom">Nom: *</label>
-						<input type="text" class="form-control champ" id="nom" required="required">
+						<input type="text" class="form-control champ" id="nom" name="nom" onblur="verif_nom(this)"/>
 					</div>
 					<div class="form-group">
 						<label for="prenom">Prenom: *</label>
-						<input type="text" class="form-control champ" id="prenom" required="required">
+						<input type="text" class="form-control champ" id="prenom" name="prenom" onblur="verif_prenom(this)"/>
 					</div>
 					<div class="form-group">
 						<label for="sel1">Sexe: *</label>
@@ -31,7 +31,7 @@
 					</div>
 					<div class="form-group">
 						<label for="date_naissance">Date de naissance: *</label>
-						<input type="date" class="form-control" id="dateNaissance" required="required">
+						<input type="date" class="form-control" id="dateNaissance" name="dateNaissance">
 					</div>
 					<button type="button" class="btn btn-default">Suivant</button>
 				</div>
@@ -42,15 +42,15 @@
 				<h3>Mes identifiants périscolarité</h3>
 				<div class="form-group">
 					<label for="email">Email: *</label>
-					<input type="email" class="form-control" id="email">
+					<input type="email" class="form-control" id="email" name="email" onblur="verif_email(this)">
 				</div>
 				<div class="form-group">
 					<label for="pwd">Mot de passe: *</label>
-					<input type="password" class="form-control" id="pwd">
+					<input type="password" class="form-control" id="pwd" name="pwd" onblur="verif_pwd(this)">
 				</div>
 				<div class="form-group">
 					<label for="pwd">Confirmer mot de passe: *</label>
-					<input type="password" class="form-control" id="confirm_pwd">
+					<input type="password" class="form-control" id="confirm_pwd" name="confirm_pwd" onblur="verif_conf_pwd(this)">
 				</div>
 				<button type="button" class="btn btn-default">Suivant</button>
 			</div>
@@ -61,11 +61,11 @@
 			  <h3>Mes coordonnées</h3>
 				<div class="form-group">
 					<label for="adresse">Adresse: *</label>
-					<input type="text" class="form-control champ" id="adresse">
+					<input type="text" class="form-control champ" id="adresse" name="adresse" onblur="verif_adresse(this)">
 				</div>
 				<div class="form-group">
 					<label for="ville">Ville: *</label>
-					<input type="text" class="form-control champ" id="ville">
+					<input type="text" class="form-control champ" id="ville" name="ville" onblur="verif_ville(this)">
 				</div>
 				<div  class="form-group">
 					<label for="vehicule">Etes-vous véhiculé ? *</label>
@@ -77,15 +77,15 @@
 				</div>
 				<div class="form-group">
 					<label for="codepostal">Code postal: *</label>
-					<input type="text" class="form-control" id="code_postale">
+					<input type="text" class="form-control" id="code_postale" name="code_postale" onblur="verif_code_postale(this)">
 				</div>
 				<div class="form-group"> 
 					<label for="numfixe">Numéro de téléphone fixe: *</label>
-					<input type="text" class="form-control" id="numfixe">
+					<input type="text" class="form-control" id="numfixe" name="num_fixe" onblur="verif_num_fixe(this)">
 				</div>
 				<div class="form-group">
 					<label for="numportable">Numéro de téléphone portable: *</label>
-					<input type="text" class="form-control" id="numportable">
+					<input type="text" class="form-control" id="numportable" name="num_portable" onblur="verif_num_portable(this)">
 				</div>
 			<button type="button" class="btn btn-default">Suivant</button>	
 			</div>
@@ -96,19 +96,19 @@
 				<h3>Mon identité</h3>
 				<div class="form-group">
 					<label for="nationalite">Nationalité: *</label>
-					<input type="text" class="form-control" id="nationalite">
+					<input type="text" class="form-control" id="nationalite" name="nationalite" onblur="verif_nationalite(this)">
 				</div>
 				<div class="form-group">
 					<label for="pays_naissance">Pays de naissance *</label>
-					<input type="text" class="form-control" id="pays_naissance">
+					<input type="text" class="form-control" id="pays_naissance" name="pays_naissance" onblur="verif_pays_naissance(this)">
 				</div>
 				<div class="form-group">
 					<label for="ville_naissance">Ville de naissance *</label>
-					<input type="text" class="form-control" id="ville_naissance">
+					<input type="text" class="form-control" id="ville_naissance" name="ville_naissance" onblur="verif_ville_naissance(this)" >
 				</div>
 				<div class="form-group">
 					<label for="code_postal_naissance">Code postal de la ville de naissance *</label>
-					<input type="text" class="form-control" id="CodePostalNaissance">
+					<input type="text" class="form-control" id="CodePostalNaissance" name="CodePostalNaissance" onblur="verif_code_postale_naissance(this)">
 				</div>
 				<div class="form-group">
 					<label for="papier_identite">Type de papier d'identité *</label>
@@ -124,15 +124,15 @@
 				</div>
 				<div class="form-group">
 					<label for="delivre_par">Délivré par *</label>
-					<input type="text" class="form-control champ" id="delivre_par">
+					<input type="text" class="form-control champ" id="delivre_par" name="delivre_par" onblur="verif_delivre_par(this)">
 				</div>
 				<div class="form-group">
 					<label for="departement_obtention">Département d'obtention des papiers d'identité *</label>
-					<input type="text" class="form-control champ" id="departement_obtention" required autofocus>
+					<input type="text" class="form-control champ" id="departement_obtention" name="departement_obtention" onblur="verif_delivre_par(this)">
 				</div>
 				<div class="form-group">
 					<label for="numero_secu_sociale">Numéro de sécurité sociale *</label>
-					<input type="text" class="form-control" id="numeroSecuSociale">
+					<input type="text" class="form-control" id="numeroSecuSociale" name="numeroSecuSociale" onblur="verif_numero_secu(this)">
 				</div>
 			<button type="button" class="btn btn-default">Suivant</button>	
 			</div>
@@ -167,7 +167,7 @@ Dimanche de</textarea>
 					</div>
 				<div class="form-group">
 					<label for="Motivation">Vos motivations* </label>
-					<textarea id="motivforminter" type="text" class="form-control"></textarea>
+					<textarea id="motivations" type="text" class="form-control" name="motivations" onblur="verif_motivations(this)"></textarea>
 				</div>
 			</div>
 		</div>
@@ -200,10 +200,10 @@ Dimanche de</textarea>
 				
 				<div class="form-group">
 					<div class="checkbox">
-						<label><input type="checkbox" name="ConditionGenerale"> J'accepte les<a href="#" data-toggle="modal" data-target="#modalCondition"> conditions générales</a>*</label>
+						<label><input type="checkbox" class="ConditionGenerale" name="ConditionGenerale" onblur="verif_conditions_gen(this)" id="ConditionGenerale"> J'accepte les<a href="#" data-toggle="modal" data-target="#modalCondition"> conditions générales</a>*</label>
 					</div>
 					<div class="checkbox">
-						<label><input type="checkbox" name="ConditionPaiement">J'accepte de me conformer aux 
+						<label><input type="checkbox" class="ConditionPaiement" name="ConditionPaiement" onblur="verif_conditions_paiement(this)" id="ConditionPaiement">J'accepte de me conformer aux 
 							<!-- Trigger the modal with a link -->
 							  <a href="#" data-toggle="modal" data-target="#modalConditionPaiement">conditions de paiement Périscolarité</a>*</label>
 					</div>
@@ -228,7 +228,6 @@ Dimanche de</textarea>
 				</div>
 				</div>
 			</div>
-						
 			 <!-- Modal -->
 						<div class="modal fade" id="modalConditionPaiement" role="dialog">
 							<div class="modal-dialog modal-lg">
