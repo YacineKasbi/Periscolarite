@@ -17,8 +17,8 @@ function openCity(evt, cityName) {
         var i, tabcontent;
 
         // Get all elements with class="tabcontent" and hide them
+        for (i = 0; i < 4; i++) {
         tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
         }
 
@@ -27,7 +27,7 @@ function openCity(evt, cityName) {
         evt.currentTarget.className += " active";
     }
 	
-/* Vérif informations formulaire dynamique JQuery */
+/* Vérif informations formulaire */
 
 $(document).ready(function(){
 	
@@ -41,15 +41,6 @@ $(document).ready(function(){
 		$code_postale = $('#code_postale'),
 		$num_fixe = $('#numfixe'),
 		$num_portable = $('#numportable'),
-		$nationalite = $('#nationalite'),
-		$pays_naissance = $('#pays_naissance'),
-		$ville_naissance = $('#ville_naissance'),
-		$code_postale_naissance = $('#CodePostalNaissance'),
-		$date_expiration = $('#date_expiration'),
-		$numero_secu = $('#numeroSecuSociale'),
-		$motivations = $('#motivations'),
-		$conditions_gen = $('.ConditionGenerale'),
-		$conditons_paiement = $('.ConditionPaiement'),
 		$champ = $('.champ');
 		
 // 1. ETAT CIVIL
@@ -72,7 +63,7 @@ $(document).ready(function(){
 		
 
 	$champ.keyup(function(){
-		if($(this).val().length < 1){ // si la taille de la chaîne de caractères est inférieure à 1
+		if($(this).val().length < 1){ // si la taille de la c
 			$(this).css({ // on rend le champ rouge
 				borderColor : 'red',
 				color : 'red'
@@ -231,116 +222,6 @@ $(document).ready(function(){
 			});
         }
     });
-
-// 3. MON IDENTITE
-	
-	$nationalite.keyup(function(){
-		if($(this).val().length < 4){
-			$(this).css({ // on rend le champ rouge
-				borderColor : 'red',
-				color : 'red'
-			});
-		 }
-		 else{
-			 $(this).css({ // si tout est bon, on le rend vert
-			 borderColor : 'green',
-			 color : 'green'
-			});
-		 }
-	});
-	
-	$pays_naissance.keyup(function(){
-		if($(this).val().length < 4){
-			$(this).css({ // on rend le champ rouge
-				borderColor : 'red',
-				color : 'red'
-			});
-		 }
-		 else{
-			 $(this).css({ // si tout est bon, on le rend vert
-			 borderColor : 'green',
-			 color : 'green'
-			});
-		 }
-	});
-	
-	$ville_naissance.keyup(function(){
-		if($(this).val().length < 1){
-			$(this).css({ // on rend le champ rouge
-				borderColor : 'red',
-				color : 'red'
-			});
-		 }
-		 else{
-			 $(this).css({ // si tout est bon, on le rend vert
-			 borderColor : 'green',
-			 color : 'green'
-			});
-		 }
-	});
-	
-	$code_postale_naissance.focusout(function(){
-        var code_postale_naissanceReg = /^(([0-8][0-9])|(9[0-5]))[0-9]{3}$/;
-        var code_postale_naissanceVal = $(this).val();
-         
-        if(code_postale_naissanceVal == '') {
-            $(this).css({
-				borderColor : 'red',
-				color : 'red'
-			});
-        } 
-		else if(!code_postale_naissanceReg.test(code_postale_naissanceVal)) {
-            $(this).css({
-				borderColor : 'red',
-				color : 'red'
-			});
-        } 
-		else {
-            $(this).css({
-				borderColor : 'green',
-				color : 'green'
-			});
-        }
-    });
-	
-	$date_expiration.click(function() {
-		$(this).css({
-					borderColor : 'green',
-					color : 'green'
-				});
-	});
-	
-	$numero_secu.keyup(function(){
-		if($(this).val().length != 15){
-			$(this).css({ // on rend le champ rouge
-				borderColor : 'red',
-				color : 'red'
-			});
-		 }
-		 else{
-			 $(this).css({ // si tout est bon, on le rend vert
-			 borderColor : 'green',
-			 color : 'green'
-			});
-		 }
-	});
-	
-// 4. TRAVAILLER POUR PERISCOLARITE
-	
-	$motivations.keyup(function(){
-		if($(this).val().length < 30){
-			$(this).css({ // on rend le champ rouge
-				borderColor : 'red',
-				color : 'red'
-			});
-		 }
-		 else{
-			 $(this).css({ // si tout est bon, on le rend vert
-			 borderColor : 'green',
-			 color : 'green'
-			});
-		 }
-	});
 });
 
 // Vérification des champs avant envoi serveur	
@@ -499,137 +380,6 @@ $(document).ready(function(){
         }
 	}
 	
-	function verif_nationalite(champ) {
-		if(champ.value.length < 4)
-		{
-			surligne(champ, true);
-			return false;
-		}
-	   else
-		{
-			surligne(champ, false);
-			return true;
-		}
-	}
-	
-	function verif_pays_naissance(champ) {
-		if(champ.value.length < 4)
-		{
-			surligne(champ, true);
-			return false;
-		}
-	   else
-		{
-			surligne(champ, false);
-			return true;
-		}
-	}
-	
-	function verif_ville_naissance(champ) {
-		if(champ.value.length < 1)
-		{
-			surligne(champ, true);
-			return false;
-		}
-	   else
-		{
-			surligne(champ, false);
-			return true;
-		}
-	}
-	
-	function verif_code_postale_naissance(champ) {
-		var code_postale_naissanceReg = /^(([0-8][0-9])|(9[0-5]))[0-9]{3}$/;
-        var code_postale_naissanceVal = champ.value;
-		
-		if(code_postale_naissanceVal == '') {
-            surligne(champ, true);
-			return false;
-        } 
-		else if(!code_postale_naissanceReg.test(code_postale_naissanceVal)) {
-            surligne(champ, true);
-			return false;
-        } 
-		else {
-			surligne(champ, false);
-			return true;
-        }
-	}
-	
-	function verif_delivre_par(champ) {
-		if(champ.value.length < 1)
-		{
-			surligne(champ, true);
-			return false;
-		}
-	   else
-		{
-			surligne(champ, false);
-			return true;
-		}
-	}
-	
-	function verif_dep_papier(champ) {
-		if(champ.value.length < 1)
-		{
-			surligne(champ, true);
-			return false;
-		}
-		else
-		{
-			surligne(champ, false);
-			return true;
-		}
-	}
-	
-	function verif_numero_secu(champ) {
-		if(champ.value.length != 15)
-		{
-			surligne(champ, true);
-			return false;
-		}
-		else
-		{
-			surligne(champ, false);
-			return true;
-		}
-	}
-	
-	function verif_motivations(champ) {
-		if(champ.value.length < 30)
-		{
-			surligne(champ, true);
-			return false;
-		}
-		else
-		{
-			surligne(champ, false);
-			return true;
-		}
-	}
-	
-	function verif_conditions_gen(champ) {
-		if(document.getElementById('ConditionGenerale').checked)
-		{
-			return true;
-		} 
-		else
-		{
-			return false;
-		}
-	}
-	
-	function verif_conditions_paiement(champ) {
-		if(document.getElementById('ConditionPaiement').checked)
-		{
-			return true;
-		} 
-		else
-		{
-			return false;
-		}
-	}
-	
 	function verifForm(f) {
 		// Evite le && paresseux
 		var nomOk = verif_nom(f.nom);
@@ -642,33 +392,16 @@ $(document).ready(function(){
 		var code_postaleOk = verif_code_postale(f.code_postale);
 		var num_fixeOk = verif_num_fixe(f.num_fixe);
 		var num_portableOk = verif_num_portable(f.num_portable);
-		var nationaliteOk = verif_nationalite(f.nationalite);
-		var pays_naissanceOk = verif_pays_naissance(f.pays_naissance);
-		var ville_naissanceOk = verif_ville_naissance(f.ville_naissance);
-		var code_postale_naissanceOk = verif_code_postale_naissance(f.CodePostalNaissance);
-		var delivre_par_Ok = verif_delivre_par(f.delivre_par);
-		var dep_papierOk = verif_dep_papier(f.departement_obtention);
-		var numero_secuOk = verif_numero_secu(f.numeroSecuSociale);
-		var motivationsOk = verif_motivations(f.motivations);
-		var conditions_genOk = verif_conditions_gen(f.ConditionGenerale);
-		var conditions_paieOk = verif_conditions_paiement(f.ConditionPaiement);
 		
-		if(nomOk && prenomOk && mailOk && pwdOk && conf_pwdOk && adresseOk && villeOk && code_postaleOk && num_fixeOk && num_portableOk && nationaliteOk && pays_naissanceOk 
-		&& ville_naissanceOk && code_postale_naissanceOk && delivre_par_Ok && dep_papierOk && numero_secuOk && motivationsOk && conditions_genOk && conditions_paieOk) 
+		if(nomOk && prenomOk && mailOk && pwdOk && conf_pwdOk && adresseOk && villeOk && code_postaleOk && num_fixeOk && num_portableOk)
 		{
 			return true;
 		}
 		else
 		{
-			alert('/!\ Formulaire incomplet !')
+			var elmt = document.getElementById('modal_form_err');
+			elmt.style.display = "block";
 			// ajouter MODAL a la place du alert avec un display none
 			return false;
 		}
 	}
-
-
-	
-
-
-
-	

@@ -1,3 +1,30 @@
+<?php
+$menu = array();
+	if(isset($_SESSION["connected"]) && $_SESSION["connected"]){
+		if($_SESSION['type'] == "intervenant"){
+			$menu['1'] = "Accueil";
+			$menu['2'] = "Espace intervenant";
+			$menu['3'] = "Tarifs/Devis";
+			$menu['4'] = "Temoignage";
+			$menu['5'] = "Nous contacter";
+		}
+		else if($_SESSION['type'] == "client"){
+			$menu['1'] = "Accueil";
+			$menu['2'] = "Espace client";
+			$menu['3'] = "Tarifs/Devis";
+			$menu['4'] = "Temoignage";
+			$menu['5'] = "Nous contacter";
+		}
+	}
+	else{
+		$menu['1'] = "Accueil";
+		$menu['2'] = "Tarifs/Devis";
+		$menu['3'] = "Temoignage";
+		$menu['4'] = "Nous contacter";
+	}
+		
+?>
+
 <body>
 <nav class="navbar navbar-default sidebar" role="navigation">
     <div class="container-fluid">
@@ -10,35 +37,51 @@
         <span class="icon-bar"></span>
       </button>      
     </div>
-    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+    <div class="collapse navbar-collapse col-lg-2" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Accueil<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Trouver une baby-sitter <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
-          <ul class="dropdown-menu forAnimate" role="menu">
-            <li><a href="{{URL::to('createusuario')}}">Espace intervenant</a></li>
-			<li class="divider"></li>
-            <li><a href="#">1</a></li>
-			<li class="divider"></li>
-            <li><a href="#">2</a></li>
-            <li class="divider"></li>
-            <li><a href="#">3</a></li>
-            <li class="divider"></li>
-            <li><a href="#">4</a></li>
-          </ul>
-        </li>
-		<li ><a href="#">Espace Intervenant<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>		
+		  <?php
+		  $href;
+			for($i=1; $i<=count($menu); $i++) { // Gere les entrees du menu de gauche selon que l'user soit client, intervenant ou non connecté
+				switch($menu[$i]){
+					case "Accueil":
+					$cont = $cont = '<li ><a href="'.base_url("/").'">Accueil<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>';
+					break;
+					
+					case "Tarifs/Devis":
+					$cont = $cont = '<li ><a href="'.base_url("structure/tarifs").'">Tarifs/Devis<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>';
+					break;
+					
+					case "Espace client":
+					$cont = $cont = '<li ><a href="'.base_url("structure/client").'">Espace client<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>';
+					break;
+					
+					case "Temoignage":
+					$cont = '<li ><a href="'.base_url("structure/temoignage").'">Temoignage<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>';
+					break;
+					
+					case "Espace intervenant":
+					$cont = $cont = '<li ><a href="'.base_url("structure/intervenant").'">Espace intervenant<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>';
+					break;
+					
+					case "Nous contacter":
+					$cont = '<li ><a href="#"data-toggle="modal" data-target="#modalContact" class="menu__link">Nous contacter<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>';
+					break;
+				}
+				echo $cont;
+			}
+		  ?>
+		<!--<li ><a href="<?php echo base_url("structure/intervenant");?>">Espace Intervenant<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>		
         <li ><a href="#">Espace client<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>        
         <li ><a href="tarifs">Tarifs et devis<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
 		<li ><a href="#"data-toggle="modal" data-target="#modalContact" class="menu__link">Nous contacter<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
-      </ul>
+     --></ul>
     </div>
 	</div>
 </nav>
 
 	<div class="container-fluid">
 	<div class="row">
-	  <div id="myCarousel" class="carousel slide col-sm-10" data-ride="carousel">
+	  <div id="myCarousel" class="carousel slide col-sm-12" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
 		  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -105,7 +148,7 @@
                                 </center>
                             </div>
                           </div>
-
+						  
                         </div>
                       </div>
           <div>

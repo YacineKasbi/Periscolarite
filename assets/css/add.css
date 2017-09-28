@@ -5,6 +5,19 @@ body,html {
 	margin: 0;
 }
 
+#drop_nav {
+	width: 234%;
+	height: 240%;
+}
+
+#drop_nav_sub {
+	
+}
+
+#caret_head {
+	margin-left: 5px;
+}
+
 /* Header barre du haut*/
 #barre_nav {
 	padding-left: 20px;
@@ -20,13 +33,12 @@ body,html {
 	height: 100%;
 	width: 100%;
 	width: calc(100% - 220px); /* taille entiere - taille du menu de gauche */
-	margin-top: -20px;
+	margin-top: 0px;
 }
-
 
 .centrage {
 	text-align: center;
-	 margin-left: auto;
+	margin-left: auto;
 	margin-right: auto;
 }
 

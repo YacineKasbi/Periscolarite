@@ -1,5 +1,5 @@
 <link href="<?php echo base_url("assets/css/subscribe.css");?>" rel="stylesheet">
-<script type="text/javascript" src="<?php echo base_url("assets/js/subscribe.js");?>"></script>
+<script type="text/javascript" src="<?php echo base_url("assets/js/subscribe_interv.js");?>"></script>
 <body>
 		<ul class="nav nav-tabs col-lg-12" id="myTab">
 		  <li class="active"><a id="defaultOpen" data-toggle="tab" href="#menu01" onclick="openCity(event, 'EtatCivil')">Etat civil</a></li>
@@ -10,7 +10,7 @@
 		  <li><a data-toggle="tab" href="#menu0" onclick="openCity(event, 'InfoComplementaire')">Information complémentaire</a></li>
 		</ul>
 	
-        <form action="test" method="post" class="enregistrement" onsubmit="return verifForm(this)">
+        <form action="<?php echo base_url("structure/valid_intervenant");?>" method="post" class="enregistrement" onsubmit="return verifForm(this)">
 			<div class="row">
 				<div id="EtatCivil" class="tabcontent col-lg-3">
 					<h3>Mon état civil</h3>
@@ -24,7 +24,7 @@
 					</div>
 					<div class="form-group">
 						<label for="sel1">Sexe: *</label>
-						<select class="form-control sel" id="sexe">
+						<select class="form-control sel" id="sexe" name="sexe">
 							<option>Homme</option>
 							<option>Femme</option>
 						</select>
@@ -69,7 +69,7 @@
 				</div>
 				<div  class="form-group">
 					<label for="vehicule">Etes-vous véhiculé ? *</label>
-					<select class="form-control sel" id="vehicule">
+					<select class="form-control sel" id="vehicule" name="vehicule">
 						<option value="oui">Oui</option>
 						<option value="non">Non</option>
 						<option value="permis">J'ai le permis mais pas de véhicule</option>
@@ -112,7 +112,7 @@
 				</div>
 				<div class="form-group">
 					<label for="papier_identite">Type de papier d'identité *</label>
-					<select class="form-control sel" id="papier_identite">
+					<select class="form-control sel" id="papier_identite" name="papier_identite">
 						<option value="carteIdentite">Carte nationnale d'identité</option>
 						<option value="passeportEurope">Passeport européen</option>
 						<option value="titreSejour">Titre de séjour</option>
@@ -142,7 +142,7 @@
 				<h3>Travailler pour périscolarité</h3>
 				<div class="form-group">
 					<label for="SituationPro">Vous êtes *</label>
-					<select class="form-control sel" id="situation_pro">
+					<select class="form-control sel" id="situation_pro" name="situation_pro">
 						<option value="etudiant">Etudiant(e)</option>
 						<option value="prof">Formateur(trice)/Professeur</option>
 						<option value="sansActivite">Sans activité</option>
@@ -156,7 +156,7 @@
 					</p>
 					<div class="form-group">
 						 <label for="Disponibilite">Vos disponibilités *</label>
-						 <textarea class="form-control" rows="7" id="dispoforminter">
+						 <textarea class="form-control" rows="7" id="dispoforminter" name="dispo">
 Lundi de
 Mardi de
 Mercredi de
@@ -177,11 +177,11 @@ Dimanche de</textarea>
 				<h3>Informations complémentaires</h3>
 				<div class="form-group">
 					<label for="parrain">Email du parrain </label>
-					<input type="email" class="form-control" id="mail_parrain">
+					<input type="email" class="form-control" id="mail_parrain" name="mail_parrain">
 				</div>
 				<div class="form-group">
 					<label for="comment_connu">Comment avez vous connu Périscolarité ? *</label>
-					<select class="form-control sel" id="comment_connu">
+					<select class="form-control sel" id="comment_connu" name="comment_connu">
 						<option value="ami">Par un ami</option>
 						<option value="commercial">Lien commercial</option>
 						<option value="moteurRecherche">Moteur de recherche</option>
@@ -198,6 +198,7 @@ Dimanche de</textarea>
 				<label class="radio-inline"><input type="radio" name="offre" value="non">Non</label>
 				</div>
 				
+				
 				<div class="form-group">
 					<div class="checkbox">
 						<label><input type="checkbox" class="ConditionGenerale" name="ConditionGenerale" onblur="verif_conditions_gen(this)" id="ConditionGenerale"> J'accepte les<a href="#" data-toggle="modal" data-target="#modalCondition"> conditions générales</a>*</label>
@@ -208,7 +209,7 @@ Dimanche de</textarea>
 							  <a href="#" data-toggle="modal" data-target="#modalConditionPaiement">conditions de paiement Périscolarité</a>*</label>
 					</div>
 				</div>
-				<button class="btn btn-default" style="float:right;" type="submit">Valider</button>
+				<button class="btn btn-default" style="float:right;" type="submit" data-toggle="modal" data-target="#modal_form_err">Valider</button>
 				<div class="row">
 				<div class="col-lg-12">
 					<p id="infoLegale" style="font-size: 50%;">
@@ -235,7 +236,7 @@ Dimanche de</textarea>
 							  <div class="modal-content">
 								<div class="modal-header">
 								  <button type="button" class="close" data-dismiss="modal">&times;</button>
-								  <h3 class="modal-title">Conditions de paiement As du Ménage</h3>
+								  <h3 class="modal-title">Conditions de paiement Périscolarité</h3>
 								</div>
 								<div class="modal-body">
 									<h4>Pour recevoir mon paiement:</h4>
@@ -244,7 +245,23 @@ Dimanche de</textarea>
 									<p>J'ai renseigné une adresse postale valide pour recevoir ma paie.</p>
 								</div>
 							  </div>
-
+							</div>
+						</div>
+						
+						<div class="modal fade" id="modal_form_err" role="dialog">
+							<div class="modal-dialog modal-lg">
+							  <!-- Modal content "nous contacter"-->
+							  <div class="modal-content">
+								<div class="modal-header">
+								  <button type="button" class="close" data-dismiss="modal">&times;</button>
+								  <h3 class="modal-title">Erreur</h3>
+								</div>
+								<div class="modal-body">
+									<h2>Erreur dans le formulaire !</h2>
+									<p>Les champs erronés sont marqués en rouge</p>
+									<p>Vérifiez que tous les champs avec une * sont bien remplis</p>
+								</div>
+							  </div>
 							</div>
 						</div>
 		</div>
